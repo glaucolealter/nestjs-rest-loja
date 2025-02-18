@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { UsuarioEntity } from './usuario.entity';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class UsuarioRepository {
     );
 
     if (!possivelUsuario) {
-      throw new Error('Usuário não existe');
+      throw new NotFoundException('Usuário não existe');
     }
 
     return possivelUsuario;
